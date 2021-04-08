@@ -10,12 +10,7 @@ export class AnimalService {
   private animalType = new BehaviorSubject<AnimalType>('cat');
   public animalTypeObservable$ = this.animalType.asObservable();
 
-  constructor(private cfr: ComponentFactoryResolver) {
-
-    this.animalType.subscribe(animal => {
-      console.log(animal);      
-    });
-  }
+  constructor(private cfr: ComponentFactoryResolver) { }
 
   changeAnimal(animal: AnimalType): void {
     this.animalType.next(animal);
@@ -29,7 +24,7 @@ export class AnimalService {
     
     vcr.clear();
 
-    let component: any; // todo: check proper type
+    let component: any; // todo: check proper type ?? typeof CatComponent | typeof DogComponent…
 
     switch(animalType) {           
       case 'cat':
