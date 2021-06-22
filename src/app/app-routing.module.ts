@@ -13,13 +13,16 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  { 
-    path: 'rxjs-7-good-practices', 
-    loadChildren: () => import('./rxjs-seven-good-practices/rxjs-seven-good-practices.module').then(m => m.RxjsSevenGoodPracticesModule)
+  {
+    path: 'rxjs-7-good-practices',
+    loadChildren: () => import('./rxjs-seven-good-practices/rxjs-seven-good-practices.module')
+    .then(m => m.RxjsSevenGoodPracticesModule)
   },
-  { 
-    path: 'dynamically-loaded-components', 
-    loadChildren: () => import('./dynamically-loaded-components/dynamically-loaded-components.module').then(m => m.DynamicallyLoadedComponentsModule) },
+  {
+    path: 'dynamically-loaded-components',
+    loadChildren: () => import('./dynamically-loaded-components/dynamically-loaded-components.module')
+      .then(m => m.DynamicallyLoadedComponentsModule)
+  },
   {
     path: '**',
     component: PageNotFoundComponent

@@ -3,6 +3,7 @@ import { mergeMap, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AnimalHostDirective } from './directives/animal-host.directive';
 import { AnimalService } from './services/animal.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-dynamically-loaded-components',
   templateUrl: './dynamically-loaded-components.component.html',
@@ -17,7 +18,7 @@ export class DynamicallyLoadedComponentsComponent implements OnInit, OnDestroy {
   constructor(private animalService: AnimalService) { }
 
   ngOnInit(): void {
-    if(this.animalHost !== null) {
+    if (this.animalHost !== null) {
       const vcr = this.animalHost.vcr;
 
       this.animalService.animalTypeObservable$
@@ -26,7 +27,7 @@ export class DynamicallyLoadedComponentsComponent implements OnInit, OnDestroy {
           mergeMap(animal => this.animalService.loadComponent(vcr, animal))
         )
         .subscribe();
-    }    
+    }
   }
 
   ngOnDestroy(): void {
